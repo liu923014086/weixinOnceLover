@@ -22,7 +22,7 @@ App({
   globalData: {
     userInfo: null,
     appid:'wxa2b49eec4c34e18a',
-    server: 'https://7a242db2.ngrok.io'
+    server: 'https://f55f22db.ngrok.io'
   }
 });
 

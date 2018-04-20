@@ -79,7 +79,7 @@ Page({
   onPullDownRefresh: function () { 
     var that = this;
     wx.request({
-      url: server,
+      url: server +"/b/wedding/blessfriend/index",
       method: 'GET',
       data: { 'c': 'info', 'appid': appid},
       header: {
@@ -131,7 +131,7 @@ Page({
     var name = userInfo.nickName;
     var face = userInfo.avatarUrl;
     wx.request({
-      url: server,
+      url: server +"/b/wedding/blessfriend/zan",
       data: { 'c': 'zan', 'appid': appid, 'nickname': name, 'face': face },
       header: {},
       method: "GET",
