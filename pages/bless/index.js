@@ -27,7 +27,7 @@ Page({
     })
 
     wx.request({
-      url: server,
+      url: server + "/b/wedding/blessfriend/index",
       method: 'GET',
       data: { 'c': 'info', 'appid': appid },
       header: {
@@ -133,8 +133,8 @@ Page({
     wx.request({
       url: server +"/b/wedding/blessfriend/zan",
       data: { 'c': 'zan', 'appid': appid, 'nickname': name, 'face': face },
-      header: {},
-      method: "GET",
+      header: { "content-type": "application/x-www-form-urlencoded"},
+      method: "POST",
       dataType: "json",
       success: res => {
          console.log(res.data);

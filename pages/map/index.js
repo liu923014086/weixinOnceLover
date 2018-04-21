@@ -49,7 +49,7 @@ Page({
     })
 
     wx.request({
-      url: server,
+      url: server + "/b/wedding/weddingmaininfo/index",
       method: 'GET',
       data: { 'c': 'info', 'appid': appid },
       header: {

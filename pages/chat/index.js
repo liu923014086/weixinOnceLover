@@ -28,7 +28,7 @@ Page({
     })
 
     wx.request({
-      url: server,
+      url: server +"/b/wedding/leavemessage/index",
       method: 'GET',
       data: { 'c': 'info', 'appid': appid },
       header: {
@@ -77,6 +77,24 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    var that = this;
+    wx.request({
+      url: server + "/b/wedding/leavemessage/index",
+      method: 'GET',
+      data: { 'c': 'info', 'appid': appid },
+      header: {
+        'Accept': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          mainInfo: res.data.mainInfo,
+          chatList: res.data.chatList,
+          chatNum: res.data.chatNum
+        });
+      }
+    })
+    
   
   },
 
@@ -125,10 +143,10 @@ Page({
       var face = userInfo.avatarUrl;
       var words = that.data.inputValue;
       wx.request({
-        url: server,
+        url: server + "/b/wedding/leavemessage/leavemessage",
         data: { 'c': 'send', 'appid': appid, 'nickname': name, 'face': face , 'words': words },
-        header: {},
-        method: "GET",
+        header: { "content-type": "application/x-www-form-urlencoded"},
+        method: "POST",
         dataType: "json",
         success: res => {
            console.log(res.data);
